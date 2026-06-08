@@ -1,0 +1,12 @@
+{
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": "**"
+      }
+    }
+  ],
+  "installCommand": "rm -rf node_modules package-lock.json && npm install"
+}
