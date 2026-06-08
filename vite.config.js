@@ -5,6 +5,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     hmr: false,
+    host: '0.0.0.0',
+    port: 5173,
   },
   optimizeDeps: {
     exclude: ["js-big-decimal", "chunk_react"],

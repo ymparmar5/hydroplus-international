@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
 const galleryImages = [
-  "/gallary/New folder/1 (6).jpg",
-  "/gallary/New folder/1 (5).jpg",
-  "/gallary/New folder/1 (4).jpg",
-  "/gallary/New folder/1 (3).jpg",
-  "/gallary/New folder/1 (2).jpg",
-  "/gallary/New folder/1 (1).jpg",
-  "/gallary/New folder/1 (1).jpeg",
-  "/gallary/New folder/1 (1)/1.jpg",
-  "/gallary/New folder/1 (1)/2.jpg",
-  "/gallary/New folder/1 (1)/3.jpg",
-  "/gallary/New folder/1 (1)/4.jpg",
+  "/1 (6).jpg",
+  "/1 (5).jpg",
+  "/1 (4).jpg",
+  "/1 (3).jpg",
+  "/1 (2).jpg",
+  "/1 (1).jpg",
+  "/1 (1).jpeg",
+  "/1.jpg",
+  "/2.jpg",
+  "/3.jpg",
+  "/4.jpg",
 ];
 
 const Gallery = () => {
@@ -58,7 +58,7 @@ const Gallery = () => {
       {/* Hero Section */}
       <div className="relative w-full h-[60vh]">
         <img
-          src="/gallary/New folder/1 (6).jpg"
+          src="/1 (6).jpg"
           alt="" // ✅ alt text हटाया ताकि hover पर कुछ ना दिखे
           className="w-full h-full object-cover"
         />
