@@ -5,6 +5,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { fireDB } from "../FireBase/FireBaseConfig";
 import Loader from "../Components/Loader";
 import Form from "../Components/Form";
+import { Play } from "lucide-react";
 
 const LENS_SIZE = 200; // px - Square magnifier size
 const LENS_ZOOM = 2.2; // Higher zoom for better detail
@@ -28,8 +29,9 @@ const ProductInfo = () => {
     try {
       const productTemp = await getDoc(doc(fireDB, "products", id));
       if (productTemp.exists()) {
-        setProduct({ ...productTemp.data(), id: productTemp.id });
-        setMainImage(productTemp.data().imgurl1);
+        const data = productTemp.data();
+        setProduct({ ...data, id: productTemp.id });
+        setMainImage(data.imgurl1 || data.videoUrl || "");
       } else {
         console.log("No such Product!");
       }
@@ -66,13 +68,18 @@ const ProductInfo = () => {
     );
   }
 
-  const images = [
-    product?.imgurl1,
-    product?.imgurl2,
-    product?.imgurl3,
-    product?.imgurl4,
-    product?.imgurl5,
+  const mediaItems = [
+    ...[
+      product?.imgurl1,
+      product?.imgurl2,
+      product?.imgurl3,
+      product?.imgurl4,
+      product?.imgurl5,
+    ].filter(Boolean),
+    product?.videoUrl
   ].filter(Boolean);
+
+  const isVideo = (url) => url && (url.includes('/video/upload/') || url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg') || url.endsWith('.mov'));
 
   const handleMouseMove = (e) => {
     if (!imgRef.current) return;
@@ -124,20 +131,31 @@ const ProductInfo = () => {
             {/* Mobile thumbnails */}
             <div className="xl:hidden mb-4 sm:mb-6">
               <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
-                {images.map((img, idx) => (
+                {mediaItems.map((item, idx) => (
                   <div
                     key={idx}
                     className="group cursor-pointer transition-all duration-300 hover:scale-105"
-                    onClick={() => setMainImage(img)}
+                    onClick={() => setMainImage(item)}
                   >
-                    <img
-                      src={img}
-                      alt={`Thumbnail ${idx + 1}`}
-                      className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-cover rounded-lg sm:rounded-xl border-2 transition-all duration-300 bg-black p-1 shadow-lg ${mainImage === img
-                        ? 'border-primary shadow-primary/30 scale-110'
-                        : 'border-gray-700 hover:border-gray-500'
-                        }`}
-                    />
+                    {isVideo(item) ? (
+                      <div
+                        className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 rounded-lg sm:rounded-xl border-2 transition-all duration-300 bg-black flex items-center justify-center shadow-lg ${mainImage === item
+                          ? 'border-primary shadow-primary/30 scale-110'
+                          : 'border-gray-700 hover:border-gray-500'
+                          }`}
+                      >
+                        <Play className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                      </div>
+                    ) : (
+                      <img
+                        src={item}
+                        alt={`Thumbnail ${idx + 1}`}
+                        className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 object-cover rounded-lg sm:rounded-xl border-2 transition-all duration-300 bg-black p-1 shadow-lg ${mainImage === item
+                          ? 'border-primary shadow-primary/30 scale-110'
+                          : 'border-gray-700 hover:border-gray-500'
+                          }`}
+                      />
+                    )}
                   </div>
                 ))}
               </div>
@@ -147,20 +165,31 @@ const ProductInfo = () => {
             <div className="hidden xl:flex gap-4 lg:gap-6 items-start">
               {/* Thumbnails */}
               <div className="flex flex-col gap-3">
-                {images.map((img, idx) => (
+                {mediaItems.map((item, idx) => (
                   <div
                     key={idx}
                     className="group cursor-pointer transition-all duration-300 hover:scale-105"
-                    onClick={() => setMainImage(img)}
+                    onClick={() => setMainImage(item)}
                   >
-                    <img
-                      src={img}
-                      alt={`Thumbnail ${idx + 1}`}
-                      className={`w-16 h-16 lg:w-20 lg:h-20 object-cover rounded-xl border-2 transition-all duration-300 bg-black p-1 shadow-lg ${mainImage === img
-                        ? 'border-primary shadow-primary/30 scale-110'
-                        : 'border-gray-700 hover:border-gray-500'
-                        }`}
-                    />
+                    {isVideo(item) ? (
+                      <div
+                        className={`w-16 h-16 lg:w-20 lg:h-20 rounded-xl border-2 transition-all duration-300 bg-black flex items-center justify-center shadow-lg ${mainImage === item
+                          ? 'border-primary shadow-primary/30 scale-110'
+                          : 'border-gray-700 hover:border-gray-500'
+                          }`}
+                      >
+                        <Play className="w-6 h-6 lg:w-8 lg:h-8 text-primary" />
+                      </div>
+                    ) : (
+                      <img
+                        src={item}
+                        alt={`Thumbnail ${idx + 1}`}
+                        className={`w-16 h-16 lg:w-20 lg:h-20 object-cover rounded-xl border-2 transition-all duration-300 bg-black p-1 shadow-lg ${mainImage === item
+                          ? 'border-primary shadow-primary/30 scale-110'
+                          : 'border-gray-700 hover:border-gray-500'
+                          }`}
+                      />
+                    )}
                   </div>
                 ))}
               </div>
@@ -168,31 +197,40 @@ const ProductInfo = () => {
               {/* Main Image */}
               <div
                 className="flex-1 relative bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800 shadow-2xl overflow-hidden group cursor-zoom-in"
-                onMouseEnter={() => { if (!isMobile()) setIsHovering(true); }}
+                onMouseEnter={() => { if (!isMobile() && !isVideo(mainImage)) setIsHovering(true); }}
                 onMouseLeave={() => setIsHovering(false)}
                 onMouseMove={handleMouseMove}
                 style={{ position: 'relative' }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                <div className="relative p-2 lg:p-3 min-h-[400px] lg:min-h-[500px] flex items-center justify-center">
-                  <img
-                    ref={imgRef}
-                    className="w-full h-auto max-h-[400px] lg:max-h-[550px] object-contain transition-all duration-500 rounded-lg border-2 border-gray-300 cursor-pointer"
-                    src={mainImage}
-                    alt="Main Product"
-                    draggable={false}
-                    onClick={handleImageClick}
-                    style={{
-                      userSelect: 'none',
-                      zIndex: 2,
-                    }}
-                  />
+                <div className="relative p-2 lg:p-3 min-h-[400px] lg:min-h-[500px] w-full flex items-center justify-center">
+                  {isVideo(mainImage) ? (
+                    <video
+                      src={mainImage}
+                      controls
+                      className="w-full h-auto max-h-[400px] lg:max-h-[550px] object-contain rounded-lg border-2 border-gray-850 bg-black shadow-lg"
+                      style={{ zIndex: 2 }}
+                    />
+                  ) : (
+                    <img
+                      ref={imgRef}
+                      className="w-full h-auto max-h-[400px] lg:max-h-[550px] object-contain transition-all duration-500 rounded-lg border-2 border-gray-300 cursor-pointer"
+                      src={mainImage}
+                      alt="Main Product"
+                      draggable={false}
+                      onClick={handleImageClick}
+                      style={{
+                        userSelect: 'none',
+                        zIndex: 2,
+                      }}
+                    />
+                  )}
                 </div>
               </div>
 
               {/* Large Zoom Preview - Desktop Only */}
-              {isHovering && (
+              {isHovering && !isVideo(mainImage) && (
                 <div
                   className="absolute top-25 right-24 border-2 border-white/30 rounded-xl overflow-hidden shadow-2xl hidden xl:block bg-white"
                   style={{
@@ -219,20 +257,31 @@ const ProductInfo = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 <div className="relative p-3 sm:p-4 md:p-6 min-h-[300px] sm:min-h-[350px] md:min-h-[400px] lg:min-h-[500px] flex items-center justify-center">
-                  <img
-                    className="w-full h-auto max-h-[280px] sm:max-h-[320px] md:max-h-[380px] lg:max-h-[480px] object-contain transition-all duration-500 group-hover:scale-105 cursor-pointer"
-                    src={mainImage}
-                    alt="Main Product"
-                    draggable={false}
-                    onClick={handleImageClick}
-                    style={{
-                      userSelect: 'none',
-                      zIndex: 2,
-                    }}
-                  />
-                  <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-black/70 text-white px-2 py-1 sm:px-3 sm:py-1 rounded-lg text-xs sm:text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Click to zoom
-                  </div>
+                  {isVideo(mainImage) ? (
+                    <video
+                      src={mainImage}
+                      controls
+                      className="w-full h-auto max-h-[280px] sm:max-h-[320px] md:max-h-[380px] lg:max-h-[480px] object-contain rounded-lg border-2 border-gray-800 bg-black shadow-lg"
+                      style={{ zIndex: 2 }}
+                    />
+                  ) : (
+                    <>
+                      <img
+                        className="w-full h-auto max-h-[280px] sm:max-h-[320px] md:max-h-[380px] lg:max-h-[480px] object-contain transition-all duration-500 group-hover:scale-105 cursor-pointer"
+                        src={mainImage}
+                        alt="Main Product"
+                        draggable={false}
+                        onClick={handleImageClick}
+                        style={{
+                          userSelect: 'none',
+                          zIndex: 2,
+                        }}
+                      />
+                      <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-black/70 text-white px-2 py-1 sm:px-3 sm:py-1 rounded-lg text-xs sm:text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Click to zoom
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

@@ -27,7 +27,7 @@ const AdminDashboard = () => {
             <div className="w-full max-w-6xl bg-secondary-white text-secondary-black rounded-xl shadow-lg p-4 sm:p-8 my-6 flex flex-col md:flex-row items-center md:items-stretch border border-primary/20">
                 {/* Left: Large Admin Image */}
                 <div className="flex-shrink-0 flex justify-center items-center w-full md:w-1/3 mb-6 md:mb-0 md:mr-8">
-                    <img className="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover border-4 border-primary shadow" src="/admin.png" alt="User" />
+                    <img className="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover border-4 border-primary shadow" src="/8.jpg" alt="User" />
                 </div>
                 {/* Right: Details */}
                 <div className="flex flex-col justify-center w-full md:w-2/3">

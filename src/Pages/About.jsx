@@ -26,61 +26,11 @@ const colors = {
   secondary: "#ff6b35",
 };
 
-const DEFAULT_FOUNDERS = [
-  {
-    name: "Aardip Jogani",
-    imageUrl: "/8.jpg",
-    role: "founder"
-  },
-  {
-    name: "Bhadresh Kikani",
-    imageUrl: "/7.jpg",
-    role: "founder"
-  }
-];
 
-const DEFAULT_STAFF = [
-  {
-    imageUrl: "/14.jpg",
-    name: "Akshay Kamani",
-    position: "CEO",
-    role: "staff"
-  },
-  {
-    imageUrl: "/12.jpg",
-    name: "Amardeep Pandey",
-    position: "Accountant",
-    role: "staff"
-  },
-  {
-    imageUrl: "/13.jpg",
-    name: "Bhavik Raja",
-    position: "Sales Executive",
-    role: "staff"
-  },
-  {
-    imageUrl: "/9.jpg",
-    name: "Priya Tank",
-    position: "Sales Executive",
-    role: "staff"
-  },
-  {
-    imageUrl: "/10.jpg",
-    name: "Mayuri Dave",
-    position: "Sales Executive",
-    role: "staff"
-  },
-  {
-    imageUrl: "/11.jpg",
-    name: "Prince Jaiswal",
-    position: "Sales Executive",
-    role: "staff"
-  },
-];
 
 export default function About() {
-  const [founders, setFounders] = useState(DEFAULT_FOUNDERS);
-  const [staff, setStaff] = useState(DEFAULT_STAFF);
+  const [founders, setFounders] = useState(null);
+  const [staff, setStaff] = useState(null);
 
   useEffect(() => {
     const fetchTeam = async () => {
@@ -183,8 +133,8 @@ export default function About() {
             </div>
 
             {/* Cards */}
-            <div className={`grid grid-cols-1 ${founders.length > 1 ? 'md:grid-cols-2' : ''} gap-8 md:gap-10 lg:gap-12 max-w-4xl mx-auto`}>
-              {founders.map((founder, index) => (
+            <div className={`grid grid-cols-1 ${founders?.length > 1 ? 'md:grid-cols-2' : ''} gap-8 md:gap-10 lg:gap-12 max-w-4xl mx-auto`}>
+              {founders?.map((founder, index) => (
                 <div key={founder.id || index} className="group transition-all duration-500 transform hover:-translate-y-2">
                   <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl p-8 md:p-10 shadow-2xl hover:shadow-orange-500/20 transition-all duration-500">
                     {/* Decorative gradient border */}
@@ -638,7 +588,7 @@ export default function About() {
             Our Team
           </h2>
           <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-14">
-            {staff.map((member, idx) => (
+            {staff?.map((member, idx) => (
               <div
                 key={member.id || idx}
                 className="relative flex flex-col justify-between h-[28rem] text-center overflow-hidden bg-white rounded-3xl shadow-[0_8px_32px_0_rgba(255,67,0,0.25)] transition-all duration-500 min-w-[240px] max-w-full w-full hover:shadow-[0_12px_40px_0_rgba(255,67,0,0.3)]"

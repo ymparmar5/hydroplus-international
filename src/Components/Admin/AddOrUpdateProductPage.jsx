@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { fireDB } from "../../FireBase/FireBaseConfig";
 import { useNavigate, useParams } from "react-router-dom";
 import myContext from '../../Context/myContext';
-// import { uploadImage } from './Cloudnary';
+import { uploadImage } from "../../utils/uploadImage";
 
 const AddOrUpdateProductPage = () => {
   const { id } = useParams();
@@ -27,6 +27,7 @@ const AddOrUpdateProductPage = () => {
     imgurl3: "",
     imgurl4: "",
     imgurl5: "",
+    videoUrl: "",
     bestSell: "",
     category1: "",
     subcategory1: "",
@@ -72,6 +73,7 @@ const AddOrUpdateProductPage = () => {
   const [subcategoryImageUploading, setSubcategoryImageUploading] = useState(false);
   const [updatedCategoryImageUploading, setUpdatedCategoryImageUploading] = useState(false);
   const [updatedSubcategoryImageUploading, setUpdatedSubcategoryImageUploading] = useState(false);
+  const [videoUploading, setVideoUploading] = useState(false);
   const [managementMode, setManagementMode] = useState('add'); // 'add' | 'update' | 'delete'
 
   // Fetch existing product (for update)
@@ -158,6 +160,22 @@ const AddOrUpdateProductPage = () => {
     } catch (error) {
       console.error(error);
       toast.error('Image upload failed');
+    }
+  };
+
+  const handleVideoUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setVideoUploading(true);
+    try {
+      const url = await uploadImage(file);
+      setProduct(prev => ({ ...prev, videoUrl: url }));
+      toast.success("Video uploaded.");
+    } catch (error) {
+      console.error(error);
+      toast.error('Video upload failed');
+    } finally {
+      setVideoUploading(false);
     }
   };
 
@@ -499,6 +517,43 @@ const AddOrUpdateProductPage = () => {
                   )}
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Product Video */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-3">Product Video</h3>
+            <div className="space-y-2 max-w-xs">
+              <label className={labelClass}>Video (Optional)</label>
+              <input
+                type="file"
+                name="videoUrl"
+                onChange={handleVideoUpload}
+                className="w-full text-sm text-gray-300 file:mr-2 file:py-1 file:px-2 file:border-0 file:text-sm file:font-medium file:bg-primary-600 file:text-white hover:file:bg-primary-700 file:rounded"
+                accept="video/*"
+              />
+              {videoUploading && (
+                <div className="flex items-center text-sm text-gray-400 mt-2">
+                  <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin mr-2"></div>
+                  Uploading video...
+                </div>
+              )}
+              {product.videoUrl && (
+                <div className="relative inline-block mt-3 border border-white/10 rounded-xl overflow-hidden bg-gray-950 p-1">
+                  <video
+                    src={product.videoUrl}
+                    className="w-48 h-32 object-cover rounded-lg"
+                    controls
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setProduct({ ...product, videoUrl: "" })}
+                    className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-700"
+                  >
+                    ×
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 

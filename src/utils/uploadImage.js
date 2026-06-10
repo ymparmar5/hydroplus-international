@@ -5,8 +5,9 @@ export const uploadImage = async (file) => {
   formData.append("cloud_name", "hydroplus"); // Replace with your Cloudinary cloud name
 
   try {
+    const resourceType = file.type.startsWith("video/") ? "video" : "image";
     const response = await fetch(
-      "https://api.cloudinary.com/v1_1/hydroplus/image/upload",
+      `https://api.cloudinary.com/v1_1/hydroplus/${resourceType}/upload`,
       {
         method: "POST",
         body: formData,
