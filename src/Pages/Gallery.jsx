@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { fireDB } from "../FireBase/FireBaseConfig";
 
-const galleryImages = [
+const DEFAULT_GALLERY_IMAGES = [
   "/1 (6).jpg",
   "/1 (5).jpg",
   "/1 (4).jpg",
@@ -15,6 +17,23 @@ const galleryImages = [
 ];
 
 const Gallery = () => {
+  const [galleryImages, setGalleryImages] = useState(DEFAULT_GALLERY_IMAGES);
+  
+  useEffect(() => {
+    const fetchGallery = async () => {
+      try {
+        const q = query(collection(fireDB, "gallery"), orderBy("time", "desc"));
+        const querySnapshot = await getDocs(q);
+        const imagesList = querySnapshot.docs.map(doc => doc.data().imageUrl);
+        if (imagesList.length > 0) {
+          setGalleryImages(imagesList);
+        }
+      } catch (error) {
+        console.error("Error fetching gallery images: ", error);
+      }
+    };
+    fetchGallery();
+  }, []);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -58,7 +77,7 @@ const Gallery = () => {
       {/* Hero Section */}
       <div className="relative w-full h-[60vh]">
         <img
-          src="/1 (6).jpg"
+          src={galleryImages[0] || "/1 (6).jpg"}
           alt="" // ✅ alt text हटाया ताकि hover पर कुछ ना दिखे
           className="w-full h-full object-cover"
         />

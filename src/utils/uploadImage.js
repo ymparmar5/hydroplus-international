@@ -1,7 +1,7 @@
 export const uploadImage = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("upload_preset", "hydroplus"); // Replace with your Cloudinary upload preset
+  formData.append("upload_preset", "Images"); // Replace with your Cloudinary upload preset
   formData.append("cloud_name", "hydroplus"); // Replace with your Cloudinary cloud name
 
   try {

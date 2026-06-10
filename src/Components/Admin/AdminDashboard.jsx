@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import ProductDetail from './ProdcutDetail';
 import ExhibitionList from "./ExhibitionList";
+import TeamList from "./TeamList";
+import GalleryList from "./GalleryList";
 import myContext from '../../Context/myContext';
 import { Link } from 'react-router-dom';
 
@@ -59,7 +61,7 @@ const AdminDashboard = () => {
 
 
             <div className="w-full max-w-6xl mt-8">
-                <div className='flex'>
+                <div className='flex flex-wrap gap-2 md:gap-0 md:flex-nowrap'>
                     <button
                         onClick={() => setTab(1)}
                         className={`${tab === 1
@@ -78,9 +80,37 @@ const AdminDashboard = () => {
                     >
                         Exhibition
                     </button>
+                    <button
+                        onClick={() => setTab(2)}
+                        className={`${tab === 2
+                                ? "bg-primary hover:bg-primary-700 text-secondary-white"
+                                : "bg-gray-900 hover:bg-gray-300 text-gray-700"
+                            }  px-6 py-2 font-semibold text-base mt-2 transition-colors duration-200 shadow focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 `}
+                    >
+                        Team / Founders
+                    </button>
+                    <button
+                        onClick={() => setTab(3)}
+                        className={`${tab === 3
+                                ? "bg-primary hover:bg-primary-700 text-secondary-white"
+                                : "bg-gray-900 hover:bg-gray-300 text-gray-700"
+                            }  px-6 py-2 font-semibold text-base mt-2 transition-colors duration-200 shadow focus:outline-none focus:ring-2 focus:ring-primary/40 focus:ring-offset-2 `}
+                    >
+                        Gallery
+                    </button>
                 </div>
 
-                {tab === 1 ? <ProductDetail /> : <ExhibitionList />}
+                <div className="mt-4">
+                    {tab === 1 ? (
+                        <ProductDetail />
+                    ) : tab === 0 ? (
+                        <ExhibitionList />
+                    ) : tab === 2 ? (
+                        <TeamList />
+                    ) : (
+                        <GalleryList />
+                    )}
+                </div>
             </div>
         </div>
     );

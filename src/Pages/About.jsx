@@ -1,5 +1,6 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { fireDB } from "../FireBase/FireBaseConfig";
 
 import {
   Mail,
@@ -24,44 +25,90 @@ const colors = {
   primary: "#ff4300",
   secondary: "#ff6b35",
 };
-const galleryImages = [
 
+const DEFAULT_FOUNDERS = [
   {
-    image: "/14.jpg",
+    name: "Aardip Jogani",
+    imageUrl: "/8.jpg",
+    role: "founder"
+  },
+  {
+    name: "Bhadresh Kikani",
+    imageUrl: "/7.jpg",
+    role: "founder"
+  }
+];
+
+const DEFAULT_STAFF = [
+  {
+    imageUrl: "/14.jpg",
     name: "Akshay Kamani",
-    position: "CEO"
+    position: "CEO",
+    role: "staff"
   },
-
   {
-    image: "/12.jpg",
+    imageUrl: "/12.jpg",
     name: "Amardeep Pandey",
-    position: "Accountant"
+    position: "Accountant",
+    role: "staff"
   },
-
   {
-    image: "/13.jpg",
+    imageUrl: "/13.jpg",
     name: "Bhavik Raja",
-    position: "Sales Executive"
+    position: "Sales Executive",
+    role: "staff"
   },
   {
-    image: "/9.jpg",
+    imageUrl: "/9.jpg",
     name: "Priya Tank",
-    position: "Sales Executive"
+    position: "Sales Executive",
+    role: "staff"
   },
-
   {
-    image: "/10.jpg",
+    imageUrl: "/10.jpg",
     name: "Mayuri Dave",
-    position: "Sales Executive"
+    position: "Sales Executive",
+    role: "staff"
   },
   {
-    image: "/11.jpg",
+    imageUrl: "/11.jpg",
     name: "Prince Jaiswal",
-    position: "Sales Executive"
+    position: "Sales Executive",
+    role: "staff"
   },
 ];
 
 export default function About() {
+  const [founders, setFounders] = useState(DEFAULT_FOUNDERS);
+  const [staff, setStaff] = useState(DEFAULT_STAFF);
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const q = query(collection(fireDB, "team"), orderBy("time", "asc"));
+        const querySnapshot = await getDocs(q);
+        const membersList = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+
+        if (membersList.length > 0) {
+          const dbFounders = membersList.filter(m => m.role === "founder");
+          const dbStaff = membersList.filter(m => m.role === "staff");
+
+          if (dbFounders.length > 0) {
+            setFounders(dbFounders);
+          }
+          if (dbStaff.length > 0) {
+            setStaff(dbStaff);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching dynamic team data:", error);
+      }
+    };
+    fetchTeam();
+  }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden text-white">
       {/* Animated Background (static) */}
@@ -136,65 +183,37 @@ export default function About() {
             </div>
 
             {/* Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 max-w-4xl mx-auto">
-  {/* Card 1 */}
-  <div className="group transition-all duration-500 transform hover:-translate-y-2">
-    <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl p-8 md:p-10 shadow-2xl hover:shadow-orange-500/20 transition-all duration-500">
-      {/* Decorative gradient border */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      
-      {/* Image Container */}
-      <div className="relative z-10 mb-6">
-        <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden border-4 border-gray-700 group-hover:border-orange-500/50 transition-all duration-500 shadow-xl">
-          <img
-            src="/8.jpg"
-            alt="Owner Main"
-            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-          />
-        </div>
-        {/* Decorative ring */}
-        <div className="absolute inset-0 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full border-2 border-orange-500/30 scale-110 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-      </div>
-      
-      {/* Name and Title */}
-      <div className="relative z-10 text-center">
-        <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">
-          Aardip Jogani
-        </h3>
-        <div className="h-1 w-16 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full"></div>
-      </div>
-    </div>
-  </div>
-  
-  {/* Card 2 */}
-  <div className="group transition-all duration-500 transform hover:-translate-y-2">
-    <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl p-8 md:p-10 shadow-2xl hover:shadow-orange-500/20 transition-all duration-500">
-      {/* Decorative gradient border */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      
-      {/* Image Container */}
-      <div className="relative z-10 mb-6">
-        <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden border-4 border-gray-700 group-hover:border-orange-500/50 transition-all duration-500 shadow-xl">
-          <img
-            src="/7.jpg"
-            alt="Co-Founder"
-            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-          />
-        </div>
-        {/* Decorative ring */}
-        <div className="absolute inset-0 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full border-2 border-orange-500/30 scale-110 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-      </div>
-      
-      {/* Name and Title */}
-      <div className="relative z-10 text-center">
-        <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">
-          Bhadresh Kikani
-        </h3>
-        <div className="h-1 w-16 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full"></div>
-      </div>
-    </div>
-  </div>
-</div>
+            <div className={`grid grid-cols-1 ${founders.length > 1 ? 'md:grid-cols-2' : ''} gap-8 md:gap-10 lg:gap-12 max-w-4xl mx-auto`}>
+              {founders.map((founder, index) => (
+                <div key={founder.id || index} className="group transition-all duration-500 transform hover:-translate-y-2">
+                  <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl p-8 md:p-10 shadow-2xl hover:shadow-orange-500/20 transition-all duration-500">
+                    {/* Decorative gradient border */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    {/* Image Container */}
+                    <div className="relative z-10 mb-6">
+                      <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full overflow-hidden border-4 border-gray-700 group-hover:border-orange-500/50 transition-all duration-500 shadow-xl">
+                        <img
+                          src={founder.imageUrl}
+                          alt={index === 0 ? "Owner Main" : "Co-Founder"}
+                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
+                      {/* Decorative ring */}
+                      <div className="absolute inset-0 w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto rounded-full border-2 border-orange-500/30 scale-110 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                    </div>
+                    
+                    {/* Name and Title */}
+                    <div className="relative z-10 text-center">
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors duration-300">
+                        {founder.name}
+                      </h3>
+                      <div className="h-1 w-16 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full"></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         {/* Company Overview */}
@@ -619,9 +638,9 @@ export default function About() {
             Our Team
           </h2>
           <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-14">
-            {galleryImages.map((member, idx) => (
+            {staff.map((member, idx) => (
               <div
-                key={member.image}
+                key={member.id || idx}
                 className="relative flex flex-col justify-between h-[28rem] text-center overflow-hidden bg-white rounded-3xl shadow-[0_8px_32px_0_rgba(255,67,0,0.25)] transition-all duration-500 min-w-[240px] max-w-full w-full hover:shadow-[0_12px_40px_0_rgba(255,67,0,0.3)]"
               >
                 {/* Top accent circle - orange gradient */}
@@ -632,7 +651,7 @@ export default function About() {
 
                 <div className="flex flex-col items-center pt-16 pb-2">
                   <img
-                    src={member.image}
+                    src={member.imageUrl}
                     alt={member.name}
                     className="h-44 w-44 rounded-full border-[6px] border-orange-50 shadow-[0_0_8px_rgba(255,67,0,0.15)] object-cover bg-white mb-5 mt-4 z-[3] relative block mx-auto"
                   />
