@@ -108,7 +108,7 @@ const CustomerReviews = () => {
 
         <div className="text-center mb-12">
           <div className={`inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm rounded-full px-6 py-3 border border-primary/30 mb-6 transition-all duration-1000 transform  }`}>
-            <Star className="w-5 h-5 text-primary animate-pulse" />
+
             <h1 className="text-sm sm:text-sm md:text-lg lg:text-3xl xlg:text-3lg font-bold text-white animate-slide-up">
               Customers <span className="text-primary">Testimonials</span>
             </h1>

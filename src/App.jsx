@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { FileText } from "lucide-react";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
@@ -111,6 +112,14 @@ const App = () => {
         <div className="hidden lg:block">
           <SocialSidebar />
         </div>
+        
+        {/* Fixed Bottom Left Certificate Icon for All Pages */}
+        <Link to="/certificates" className="fixed bottom-4 left-4 md:bottom-8 md:left-8 z-40" title="View Certificates">
+          <div className="bg-gradient-to-br from-orange-500 to-red-600 p-2 md:p-3 rounded-full shadow-lg shadow-orange-500/30 flex items-center justify-center animate-bounce shadow-2xl border border-white/10 backdrop-blur-md hover:scale-110 transition-transform">
+            <FileText className="w-4 h-4 md:w-6 md:h-6 text-white" />
+          </div>
+        </Link>
+        
         <Footer />
         <Toaster />
 

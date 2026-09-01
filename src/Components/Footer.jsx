@@ -86,6 +86,8 @@ const Footer = () => {
                 <li><Link to="/shop" className="text-gray-400 hover:text-primary transition-colors duration-300 text-xs md:text-sm block py-0.5 md:py-1">Products</Link></li>
                 <li><Link to="/certificates" className="text-gray-400 hover:text-primary transition-colors duration-300 text-xs md:text-sm block py-0.5 md:py-1">Certificates</Link></li>
                 <li><Link to="/exhibitions" className="text-gray-400 hover:text-primary transition-colors duration-300 text-xs md:text-sm block py-0.5 md:py-1">Exhibitions</Link></li>
+                <li><Link to="/privacy" className="text-gray-400 hover:text-primary transition-colors duration-300 text-xs md:text-sm block py-0.5 md:py-1">Privacy Policy</Link></li>
+                <li><Link to="/tandc" className="text-gray-400 hover:text-primary transition-colors duration-300 text-xs md:text-sm block py-0.5 md:py-1">Terms & Conditions</Link></li>
               </ul>
             </div>
             
@@ -103,6 +105,8 @@ const Footer = () => {
                   <li><Link to="/shop" className="text-gray-400 hover:text-primary transition-colors duration-300 text-sm block py-1">Products</Link></li>
                   <li><Link to="/certificates" className="text-gray-400 hover:text-primary transition-colors duration-300 text-sm block py-1">Certificates</Link></li>
                   <li><Link to="/exhibitions" className="text-gray-400 hover:text-primary transition-colors duration-300 text-sm block py-1">Exhibitions</Link></li>
+                  <li><Link to="/privacy" className="text-gray-400 hover:text-primary transition-colors duration-300 text-sm block py-1">Privacy Policy</Link></li>
+                  <li><Link to="/tandc" className="text-gray-400 hover:text-primary transition-colors duration-300 text-sm block py-1">Terms & Conditions</Link></li>
                 </ul>
               </div>
             </div>

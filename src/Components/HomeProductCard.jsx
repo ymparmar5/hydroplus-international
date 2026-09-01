@@ -59,7 +59,7 @@ const products =
         {/* Heading */}
         <div className="text-center mb-10 sm:mb-12 md:mb-14 lg:mb-16">
           <div className="inline-flex items-center gap-2 sm:gap-3 bg-primary/20 backdrop-blur-sm rounded-full px-5 py-2 sm:px-6 sm:py-2.5 md:px-7 md:py-3 border border-primary/30">
-            <Star className="w-4 h-4 sm:w-5 sm:h-5 text-primary animate-pulse" />
+
             <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white">
               Best <span className="text-primary">Selling</span>
             </h1>

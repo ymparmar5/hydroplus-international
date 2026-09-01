@@ -181,7 +181,7 @@ const Category = () => {
                     <div className="text-center mb-12">
                         <div className={`inline-flex items-center gap-2 backdrop-blur-sm rounded-full px-6 py-3 border border-orange-500/30 mb-6 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
                             style={{ transform: isVisible ? 'translate3d(0,0,0)' : 'translate3d(0,32px,0)', willChange: 'transform, opacity' }}>
-                            <Sparkles className="w-5 h-5 text-orange-500 animate-pulse" />
+
                             <h1 className="text-sm sm:text-sm md:text-lg lg:text-3xl xlg:text-3lg font-bold text-white">
                                 Featured <span className="text-orange-500">Categories</span>
                             </h1>
