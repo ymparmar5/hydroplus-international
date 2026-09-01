@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X, ZoomIn, Eye, ShieldCheck } from "lucide-react";
+import { X, ZoomIn, Eye, ShieldCheck, FileText } from "lucide-react";
 
 const certificates = [
   {
@@ -133,7 +133,7 @@ export default function Certificates() {
                 ) : (
                   /* Error State */
                   <div className="aspect-[4/3] bg-gray-700 rounded-xl flex flex-col items-center justify-center text-gray-400">
-                    <div className="text-4xl mb-2">📄</div>
+                    <div className="flex justify-center mb-2"><FileText className="w-10 h-10 text-gray-500" /></div>
                     <p className="text-sm text-center px-4 font-medium">{certificate.name}</p>
                     <p className="text-xs text-gray-500 mt-1">Image not available</p>
                   </div>

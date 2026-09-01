@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { fireDB } from "../../FireBase/FireBaseConfig";
 import { useNavigate } from "react-router";
 import { uploadImage } from '../../utils/uploadImage';
+import { Home, Camera, Save, RefreshCw } from "lucide-react";
 
 const AddUpdateImage = () => {
   const navigate = useNavigate();
@@ -315,14 +316,14 @@ const AddUpdateImage = () => {
               <div className="w-2 h-12 bg-gradient-to-b from-primary to-primary-600 rounded-full shadow-lg"></div>
               <div>
                 <h2 className="text-3xl font-bold text-white flex items-center gap-3">
-                  🏠 {homeDocId ? 'Update' : 'Add'} Home Page Images
+                  <Home className="w-8 h-8 text-white" /> {homeDocId ? 'Update' : 'Add'} Home Page Images
                 </h2>
                 <div className="w-20 h-1 bg-primary rounded-full mt-2"></div>
               </div>
             </div>
             <div className="bg-gradient-to-r from-primary-50/10 to-primary-100/10 p-4 rounded-2xl border border-primary/20 backdrop-blur-sm">
               <p className="text-gray-300 text-sm flex items-center gap-2 flex-wrap">
-                <span className="text-lg">📸</span>
+                <span className="text-lg"><Camera className="w-5 h-5 text-primary" /></span>
                 Upload up to 10 images for the home page (JPEG, PNG, WebP - Max 5MB each)
               </p>
               {homeDocId && (
@@ -345,7 +346,7 @@ const AddUpdateImage = () => {
               className="group px-10 py-4 bg-gradient-to-r from-primary to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-3 text-lg hover:scale-105"
             >
               {loading && <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>}
-              <span>{loading ? 'Saving...' : homeDocId ? '🔄 Update Home Images' : '💾 Save Home Images'}</span>
+              <span>{loading ? 'Saving...' : homeDocId ? <span className="flex items-center gap-2"><RefreshCw className="w-5 h-5" /> Update Home Images</span> : <span className="flex items-center gap-2"><Save className="w-5 h-5" /> Save Home Images</span>}</span>
             </button>
           </div>
         </div>

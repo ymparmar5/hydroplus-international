@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import myContext from '../Context/myContext';
-import { X } from 'lucide-react';
+import { X, Search } from 'lucide-react';
 
 const Shop = () => {
     const navigate = useNavigate();
@@ -251,7 +251,7 @@ const Shop = () => {
                                 </div>
                             ) : currentItems.length === 0 ? (
                                 <div className="text-center py-20">
-                                    <div className="text-6xl mb-4">🔍</div>
+                                    <div className="flex justify-center mb-4"><Search className="w-16 h-16 text-gray-500" /></div>
                                     <h3 className="text-xl font-semibold text-white mb-2">
                                         No {isShowingSubcategories ? 'subcategories' : 'products'} found
                                     </h3>

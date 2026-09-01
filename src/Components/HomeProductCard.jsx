@@ -72,7 +72,7 @@ const products =
             <Loader />
           </div>
         ) : (
-          <div className="max-w-7xl mx-auto relative px-10 sm:px-12 md:px-14 lg:px-16">
+          <div className="max-w-7xl my-auto mx-auto relative px-10 sm:px-12 md:px-14 lg:px-16">
             <div className="overflow-hidden">
               <div
                 className="flex transition-transform duration-700 ease-in-out"
