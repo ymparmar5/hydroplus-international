@@ -275,7 +275,7 @@ const HeroSection = () => {
   // Loading state - show placeholder until first slide loads
   if (isInitialLoading || slides.length === 0) {
     return (
-      <section className="relative w-full bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
+      <section className="relative w-full overflow-hidden">
         {backgroundElements}
         <div className="relative w-full">
           <div className="w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh]">
@@ -294,7 +294,7 @@ const HeroSection = () => {
   }
 
   return (
-    <section className="relative w-full bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
+    <section className="relative w-full overflow-hidden">
       {backgroundElements}
 
       <div className="relative w-full">

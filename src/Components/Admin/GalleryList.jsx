@@ -121,7 +121,7 @@ const GalleryList = () => {
       </div>
 
       {uploading && (
-        <div className="flex items-center justify-center p-4 bg-gray-900 border border-primary/20 rounded-2xl gap-3 animate-pulse">
+        <div className="flex items-center justify-center p-4 border border-primary/20 rounded-2xl gap-3 animate-pulse">
           <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
           <p className="text-sm font-bold text-primary">Uploading and adding image to gallery...</p>
         </div>

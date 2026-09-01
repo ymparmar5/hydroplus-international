@@ -296,7 +296,7 @@ const AddUpdateImage = () => {
 
   if (initialLoading) {
     return (
-      <div className="min-h-screen bg-gray-800 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
           <p className="text-white font-bold text-lg">Loading images...</p>
@@ -306,10 +306,10 @@ const AddUpdateImage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-800 py-10 px-4">
+    <div className="min-h-screen py-10 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Home Images Section */}
-        <div className="bg-gray-900/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-700 p-8 mb-10">
+        <div className="backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-700 p-8 mb-10">
           <div className="mb-10">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-2 h-12 bg-gradient-to-b from-primary to-primary-600 rounded-full shadow-lg"></div>

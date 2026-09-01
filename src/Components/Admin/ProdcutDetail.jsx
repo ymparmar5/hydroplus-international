@@ -47,7 +47,7 @@ const ProductDetail = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-900 p-6">
+        <div className="min-h-screen p-6">
             <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-center mb-8">
                     <h1 className="text-3xl font-bold text-white">Product Management</h1>
@@ -61,17 +61,17 @@ const ProductDetail = () => {
 
                 {/* Statistics */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                    <div className="rounded-lg p-6 border border-gray-700">
                         <h3 className="text-lg font-semibold text-gray-300 mb-2">Total Products</h3>
                         <p className="text-3xl font-bold text-white">{getAllProduct.length}</p>
                     </div>
-                    <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                    <div className="rounded-lg p-6 border border-gray-700">
                         <h3 className="text-lg font-semibold text-gray-300 mb-2">Categories</h3>
                         <p className="text-3xl font-bold text-primary-400">
                             {[...new Set(getAllProduct.map(item => item.category))].length}
                         </p>
                     </div>
-                    <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                    <div className="rounded-lg p-6 border border-gray-700">
                         <h3 className="text-lg font-semibold text-gray-300 mb-2">Active Products</h3>
                         <p className="text-3xl font-bold text-green-400">{getAllProduct.length}</p>
                     </div>
@@ -88,7 +88,7 @@ const ProductDetail = () => {
                         </button>
                     </div>
                 ) : (
-                    <div className="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+                    <div className="rounded-lg border border-gray-700 overflow-hidden">
                         <div className="overflow-x-auto">
                             <table className="w-full">
                                 <thead className="bg-gray-700">

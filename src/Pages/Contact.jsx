@@ -57,7 +57,7 @@ const ContactPage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden ">
+    <div className="min-h-screen relative overflow-hidden ">
       {/* Header Section */}
       <div className="relative h-[160px] xs:h-[200px] sm:h-[220px] md:h-[300px] lg:h-[350px] w-full mb-8 sm:mb-12 overflow-hidden animate-pulse-glow">
         <div
@@ -125,7 +125,7 @@ const ContactPage = () => {
 
               <div className="space-y-6 sm:space-y-8">
                 {/* Lottie Animation */}
-                <div className="w-full h-52 xs:h-64 sm:h-80 md:h-96 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center border border-primary/20">
+                <div className="w-full h-52 xs:h-64 sm:h-80 md:h-96 rounded-2xl flex items-center justify-center border border-primary/20">
                   <DotLottieReact
                     src="https://lottie.host/ae36f017-af39-4778-8908-d1687a0c97fb/UMvc5mwvQL.lottie"
                     loop

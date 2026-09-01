@@ -73,7 +73,7 @@ const Gallery = () => {
   }, [isModalOpen]);
 
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center">
+    <div className="min-h-screen flex flex-col items-center">
       {/* Hero Section */}
       <div className="relative w-full h-[60vh]">
         <img

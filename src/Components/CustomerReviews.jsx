@@ -96,7 +96,7 @@ const CustomerReviews = () => {
   };
 
   return (
-    <section className="w-full relative bg-gradient-to-br from-black via-gray-900 to-black py-4 overflow-hidden">
+    <section className="w-full relative py-4 overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 pointer-events-none select-none">
         <div className="absolute top-10 right-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>

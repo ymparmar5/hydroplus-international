@@ -274,7 +274,7 @@ const TeamList = () => {
       {/* Modal */}
       {modalOpen && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="w-full max-w-lg bg-gray-800 border border-gray-700 rounded-3xl p-6 md:p-8 relative shadow-2xl animate-fade-in">
+          <div className="w-full max-w-lg border border-gray-700 rounded-3xl p-6 md:p-8 relative shadow-2xl animate-fade-in">
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors p-1"

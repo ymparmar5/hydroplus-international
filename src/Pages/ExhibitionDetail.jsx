@@ -79,7 +79,7 @@ const ExhibitionDetail = () => {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen bg-gray-900">
+            <div className="flex items-center justify-center min-h-screen">
                 <div className="flex items-center space-x-2 text-white">
                     <svg className="animate-spin h-6 w-6 text-primary-500" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -93,7 +93,7 @@ const ExhibitionDetail = () => {
 
     if (!exhibition) {
         return (
-            <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+            <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
                     <h2 className="text-2xl font-bold text-white mb-4">Exhibition not found</h2>
                     <Link to="/exhibitions" className="text-primary-400 hover:text-primary-300">
@@ -105,10 +105,10 @@ const ExhibitionDetail = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-900">
+        <div className="min-h-screen">
             {/* Header Image */}
             {exhibition.headerImage && (
-                <div className="relative h-64 md:h-96 bg-gray-800">
+                <div className="relative h-64 md:h-96">
                     <img
                         src={exhibition.headerImage}
                         alt={exhibition.title}
@@ -142,7 +142,7 @@ const ExhibitionDetail = () => {
 
             {/* No Header Image Layout */}
             {!exhibition.headerImage && (
-                <div className="bg-gray-800 py-12">
+                <div className="py-12">
                     <div className="container mx-auto px-4">
                         <nav className="mb-6">
                             <Link to="/exhibitions" className="text-primary-400 hover:text-primary-300">
@@ -171,7 +171,7 @@ const ExhibitionDetail = () => {
                     <div className="lg:w-2/3">
                         <div className="space-y-12">
                             {exhibition.sections.map((section, sectionIndex) => (
-                                <section key={section.id} className="bg-gray-800 rounded-lg p-6 md:p-8 border border-gray-700">
+                                <section key={section.id} className="rounded-lg p-6 md:p-8 border border-gray-700">
                                     {section.sectionTitle && (
                                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
                                             {section.sectionTitle}
@@ -219,7 +219,7 @@ const ExhibitionDetail = () => {
                         {/* Mobile Sidebar Toggle */}
                         <button
                             onClick={() => setSidebarOpen(!sidebarOpen)}
-                            className="lg:hidden w-full mb-4 bg-gray-800 text-white p-3 rounded-lg flex items-center justify-between border border-gray-700"
+                            className="lg:hidden w-full mb-4 text-white p-3 rounded-lg flex items-center justify-between border border-gray-700"
                         >
                             <span>Other Exhibitions</span>
                             <svg 
@@ -234,7 +234,7 @@ const ExhibitionDetail = () => {
 
                         {/* Sidebar Content */}
                         <div className={`lg:block ${sidebarOpen ? 'block' : 'hidden'}`}>
-                            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700 sticky top-4">
+                            <div className="rounded-lg p-6 border border-gray-700 sticky top-4">
                                 <h3 className="text-xl font-bold text-white mb-6">Other Exhibitions</h3>
                                 
                                 {otherExhibitions.length === 0 ? (

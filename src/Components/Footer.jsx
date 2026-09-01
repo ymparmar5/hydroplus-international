@@ -20,7 +20,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full bg-gradient-to-br from-black via-gray-900 to-black border-t border-white/10 relative">
+    <footer className="w-full border-t border-white/10 relative">
       {/* Custom CSS for 425px breakpoint and dropdown animation */}
       <style>{`
         @media (min-width: 426px) {

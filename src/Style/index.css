@@ -10,6 +10,12 @@
   --font: "Poppins", sans-serif;
   
 }
+body {
+  @apply bg-gradient-to-br from-black via-gray-900 to-black;
+  background-attachment: fixed;
+  color: var(--color5);
+}
+
 #root {
   display: flex;
     flex-direction: column;
@@ -22,7 +28,7 @@
   --color7: #ffffff81;
   text-align: center; 
   text-transform: capitalize; 
-  font-color: var(--color5);
+  color: var(--color5);
 }
 
 

@@ -60,7 +60,7 @@ export default function About() {
     fetchTeam();
   }, []);
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden text-white">
+    <div className="min-h-screen relative overflow-hidden text-white">
       {/* Animated Background (static) */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div
@@ -136,7 +136,7 @@ export default function About() {
             <div className={`grid grid-cols-1 ${founders?.length > 1 ? 'md:grid-cols-2' : ''} gap-8 md:gap-10 lg:gap-12 max-w-4xl mx-auto`}>
               {founders?.map((founder, index) => (
                 <div key={founder.id || index} className="group transition-all duration-500 transform hover:-translate-y-2">
-                  <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl p-8 md:p-10 shadow-2xl hover:shadow-orange-500/20 transition-all duration-500">
+                  <div className="relative rounded-3xl p-8 md:p-10 shadow-2xl hover:shadow-orange-500/20 transition-all duration-500">
                     {/* Decorative gradient border */}
                     <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     

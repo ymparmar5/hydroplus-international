@@ -108,9 +108,9 @@ const Shop = () => {
     }, [category, selectedSubcategory]);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+        <div className="min-h-screen">
             {/* Mobile Menu Toggle */}
-            <div className="lg:hidden bg-gray-800 shadow-lg border-b border-gray-700 p-4">
+            <div className="lg:hidden shadow-lg border-b border-gray-700 p-4">
                 <button
                     onClick={() => setSidebarOpen(!sidebarOpen)}
                     className="flex items-center space-x-2 text-primary-400 font-medium hover:text-primary-300 transition-colors duration-200"
@@ -128,12 +128,12 @@ const Shop = () => {
                 <aside className={`
                     fixed lg:static top-0 lg:top-auto left-0 z-20 w-80 lg:w-72 
                     h-screen lg:h-auto
-                    bg-gray-800 shadow-2xl lg:shadow-xl border-r border-gray-700
+                    shadow-2xl lg:shadow-xl border-r border-gray-700
                     transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
                     lg:translate-x-0 transition-transform duration-300 ease-in-out
                     lg:mt-0 mt-16
                 `}>
-                    <div className="p-6 border-b border-gray-700 bg-gradient-to-r from-primary-800 to-primary-700">
+                    <div className="p-6 border-b border-gray-700">
                         <div className="flex items-center justify-between">
                             <h2 className="text-xl font-bold text-white">Categories</h2>
                             <button
@@ -328,7 +328,7 @@ const Shop = () => {
 
                         {/* Pagination */}
                         {totalPages > 1 && (
-                            <div className="mt-8 bg-gray-800 rounded-xl shadow-xl border border-gray-700 p-6 backdrop-blur-sm">
+                            <div className="mt-8 rounded-xl shadow-xl border border-gray-700 p-6 backdrop-blur-sm">
                                 <div className="flex flex-wrap justify-center gap-2">
                                     {/* Previous Button */}
                                     <button

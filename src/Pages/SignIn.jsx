@@ -66,9 +66,9 @@ const SignIN = () => {
 };
 
     return (
-        <div className="min-h-[80vh] flex items-center justify-center bg-gray-50 px-2">
+        <div className="min-h-[80vh] flex items-center justify-center px-2">
             {loading && <Loader />}
-            <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-6 md:p-10 flex flex-col gap-6">
+            <div className="w-full max-w-md backdrop-blur-lg border border-white/10 rounded-xl shadow-lg p-6 md:p-10 flex flex-col gap-6">
                 <h3 className="text-2xl font-bold text-primary-500 text-center mb-2">Sign In</h3>
                 <input
                     type="email"

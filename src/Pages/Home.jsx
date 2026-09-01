@@ -34,7 +34,7 @@ const Home = () => {
         setShowPopup(false);
     };
     return (
-        <main className="min-h-screen w-full flex flex-col bg-black">
+        <main className="min-h-screen w-full flex flex-col">
             <HeroSection />
             <Category />
             <HomeProductCard />

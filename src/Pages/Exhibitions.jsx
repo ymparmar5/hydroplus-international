@@ -51,7 +51,7 @@ const Exhibitions = () => {
     const inputClass = "border border-gray-600 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 bg-gray-700 text-white placeholder-gray-400";
 
     return (
-        <div className="min-h-screen bg-gray-900 py-8">
+        <div className="min-h-screen py-8">
             <div className="container mx-auto px-4">
                 {/* Header Section */}
                 <div className="text-center mb-12">
@@ -119,7 +119,7 @@ const Exhibitions = () => {
                                 to={`/exhibitionDetail/${exhibition.id}`}
                                 className="group"
                             >
-                                <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2 border border-gray-700 hover:border-primary-500">
+                                <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2 border border-gray-700 hover:border-primary-500">
                                     {/* Header Image */}
                                     <div className="relative h-48 bg-gray-700">
                                         {exhibition.headerImage ? (

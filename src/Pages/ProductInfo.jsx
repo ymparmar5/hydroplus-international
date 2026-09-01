@@ -121,7 +121,7 @@ const ProductInfo = () => {
   };
 
   return (
-    <section className="w-full min-h-[80vh] bg-gradient-to-br from-black via-gray-900 to-black text-white py-4 sm:py-8 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-16">
+    <section className="w-full min-h-[80vh] text-white py-4 sm:py-8 md:py-12 lg:py-16 px-4 sm:px-6 md:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto">
         {/* Main Product Layout - Responsive grid */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 items-start">
@@ -196,7 +196,7 @@ const ProductInfo = () => {
 
               {/* Main Image */}
               <div
-                className="flex-1 relative bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-gray-800 shadow-2xl overflow-hidden group cursor-zoom-in"
+                className="flex-1 relative rounded-2xl border border-gray-800 shadow-2xl overflow-hidden group cursor-zoom-in"
                 onMouseEnter={() => { if (!isMobile() && !isVideo(mainImage)) setIsHovering(true); }}
                 onMouseLeave={() => setIsHovering(false)}
                 onMouseMove={handleMouseMove}
@@ -253,7 +253,7 @@ const ProductInfo = () => {
 
             {/* Mobile/Tablet Main Image */}
             <div className="xl:hidden">
-              <div className="relative bg-gradient-to-br from-gray-900 to-black rounded-xl sm:rounded-2xl border border-gray-800 shadow-2xl overflow-hidden group cursor-zoom-in">
+              <div className="relative rounded-xl sm:rounded-2xl border border-gray-800 shadow-2xl overflow-hidden group cursor-zoom-in">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 <div className="relative p-3 sm:p-4 md:p-6 min-h-[300px] sm:min-h-[350px] md:min-h-[400px] lg:min-h-[500px] flex items-center justify-center">
@@ -378,7 +378,7 @@ const ProductInfo = () => {
 
         {/* Description Section */}
         <div className="mt-4 sm:mt-6 md:mt-8  ">
-          <div className="bg-gradient-to-br from-white/5 to-white/10 rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 border border-white/10 backdrop-blur-sm">
+          <div className="rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 border border-white/10 backdrop-blur-sm">
             {product && product.description ? (
               <div>
                 <h2 className="text-lg sm:text-xl md:text-2xl text-primary mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">

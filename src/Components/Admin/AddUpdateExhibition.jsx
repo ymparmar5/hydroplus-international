@@ -223,7 +223,7 @@ const AddUpdateExhibition = () => {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen bg-gray-900 text-lg font-semibold text-white">
+            <div className="flex items-center justify-center min-h-screen text-lg font-semibold text-white">
                 <div className="flex items-center space-x-2">
                     <svg className="animate-spin h-6 w-6 text-primary-500" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -240,8 +240,8 @@ const AddUpdateExhibition = () => {
     const labelClass = "text-sm text-gray-300 mb-1 block";
 
     return (
-        <div className="min-h-screen flex flex-col gap-2 items-center justify-center bg-gray-900 p-4">
-            <div className="w-full max-w-4xl bg-gray-800 rounded-lg shadow-2xl p-8 border border-gray-700">
+        <div className="min-h-screen flex flex-col gap-2 items-center justify-center p-4">
+            <div className="w-full max-w-4xl rounded-lg shadow-2xl p-8 border border-gray-700">
                 <div className="mb-6 text-center">
                     <h2 className="text-2xl font-bold text-white mb-2">
                         {id ? 'Update Exhibition' : 'Add Exhibition'}

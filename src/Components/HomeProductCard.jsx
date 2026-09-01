@@ -45,7 +45,7 @@ const products =
   const goToSlide = (index) => setCurrentSlide(index);
 
   return (
-    <section className="w-full relative bg-gradient-to-br from-black via-gray-900 to-black py-10 sm:py-14 md:py-16 lg:py-20 overflow-hidden">
+    <section className="w-full relative py-10 sm:py-14 md:py-16 lg:py-20 overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none select-none">
         <div className="absolute top-10 right-1/4 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
@@ -107,7 +107,7 @@ const products =
                             onClick={() => navigate(`/productinfo/${getProductId(item)}`)}
                             className="bg-white/5 backdrop-blur-lg rounded-xl p-3 sm:p-4 md:p-5 border border-white/10 hover:border-primary transition-all duration-500 hover:scale-105 cursor-pointer flex flex-col h-full w-full max-w-xs mx-auto"
                           >
-                            <div className="aspect-square overflow-hidden bg-gray-50 flex items-center justify-center mb-3 sm:mb-3.5 md:mb-4 rounded-lg">
+                            <div className="aspect-square overflow-hidden flex items-center justify-center mb-3 sm:mb-3.5 md:mb-4 rounded-lg">
                               <img
                                 src={item.imgurl1}
                                 alt={item.title}

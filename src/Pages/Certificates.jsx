@@ -48,7 +48,7 @@ export default function Certificates() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <div className="">
       {/* Header Section */}
 
       <div className="text-center py-8 px-4">
@@ -76,7 +76,7 @@ export default function Certificates() {
           {certificates.map((certificate, index) => (
             <div
               key={index}
-              className="group relative bg-gray-800/60 backdrop-blur-sm rounded-2xl p-4 shadow-2xl border border-gray-700/50 hover:border-gray-600/50 transition-all duration-500 hover:transform hover:scale-[1.02] hover:shadow-3xl"
+              className="group relative backdrop-blur-sm rounded-2xl p-4 shadow-2xl border border-gray-700/50 hover:border-gray-600/50 transition-all duration-500 hover:transform hover:scale-[1.02] hover:shadow-3xl"
             >
               {/* Certificate Number Badge */}
               <div
@@ -87,7 +87,7 @@ export default function Certificates() {
               </div>
 
               {/* Image Container */}
-              <div className="relative overflow-hidden rounded-xl bg-gray-900/50">
+              <div className="relative overflow-hidden rounded-xl">
                 {!imageErrors.has(index) ? (
                   <>
                     {/* Loading Skeleton */}
